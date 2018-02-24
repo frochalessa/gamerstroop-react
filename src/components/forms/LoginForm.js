@@ -1,21 +1,24 @@
-import React from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
-import Validator from 'validator';
-import PropTypes from 'prop-types';
-import InlineError from '../messages/InlineError';
+import React from "react";
+import { Form, Button, Message } from "semantic-ui-react";
+import Validator from "validator";
+import PropTypes from "prop-types";
+import InlineError from "../messages/InlineError";
 
+//login
 class LoginForm extends React.Component {
   state = {
     data: {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     },
     loading: false,
     errors: {}
   };
 
   onChange = e =>
-    this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value } });
+    this.setState({
+      data: { ...this.state.data, [e.target.name]: e.target.value }
+    });
 
   onSubmit = () => {
     const errors = this.validate(this.state.data);
@@ -32,7 +35,7 @@ class LoginForm extends React.Component {
 
   validate = data => {
     const errors = {};
-    if (!Validator.isEmail(data.email)) errors.email = 'Invalid email';
+    if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
     if (!data.password) errors.password = "Can't be blank";
     return errors;
   };
